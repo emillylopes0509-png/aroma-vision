@@ -532,8 +532,29 @@ transition:0.3s;
 opacity:1;
 transform:translateY(0);
 }
+        .remy-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 999;
+        }
+
+        .fala-remy {
+            position: absolute;
+            bottom: 80px;
+            right: 0;
+            background: white;
+            color: black;
+            padding: 10px 14px;
+            border-radius: 12px;
+            font-size: 14px;
+            max-width: 180px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        .fala-remy {
+            display: none;
+        }
     </style>
-    <img src="remy.png" class="remy" alt="Remy">
 </head>
 <body>
 
@@ -723,7 +744,14 @@ transform:translateY(0);
             <img src="remy.png" class="remy" alt="Remy">
             <div class="fala-remy">Qualquer um pode cozinhar! 🐭</div>
         </div>
+        <script>
+const remy = document.querySelector('.remy');
+const fala = document.querySelector('.fala-remy');
+
+remy.addEventListener('click', () => {
+    fala.style.display = fala.style.display === 'block' ? 'none' : 'block';
+});
+</script>
     </footer>
-    <!-- teste -->.
 </body>
 </html>
