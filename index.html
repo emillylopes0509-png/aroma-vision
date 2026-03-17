@@ -5,6 +5,68 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>AROMA & VISÃO</title>
     <style>
+
+        @keyframes aparecer {
+            0% {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero {
+            animation: aparecer 1.5s ease forwards;
+        }
+
+        h1 {
+            animation: aparecer 2s ease forwards;
+        }
+
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+            .particles span {
+                position: absolute;
+                width: 4px;
+                height: 4px;
+                background: #d4af37;
+                border-radius: 50%;
+                opacity: 0.6;
+                animation: flutuar 10s linear infinite;
+            }
+
+        @keyframes flutuar {
+            0% {
+                transform: translateY(100vh);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 0.6;
+            }
+
+            90% {
+                opacity: 0.6;
+            }
+
+            100% {
+                transform: translateY(-10vh);
+                opacity: 0;
+            }
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -383,20 +445,99 @@
         .site-liberado #loginOverlay {
             display: none;
         }
+
+        @keyframes brilhoDourado {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            100% {
+                background-position: 200% 50%;
+            }
+        }
+
+        h1 {
+            background: linear-gradient( 90deg, #fffdf8, #f6e3b0, #d4af37, #fff5d5, #d4af37, #f6e3b0, #fffdf8 );
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: brilhoDourado 6s linear infinite;
+        }
+        .remy {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 70px;
+            opacity: 0.8;
+            transition: transform 0.4s ease;
+            cursor: pointer;
+            z-index: 999;
+        }
+
+            .remy:hover {
+                transform: scale(1.1) rotate(-5deg);
+            }
+        .prato img {
+            width: 100%;
+            border-radius: 10px;
+            transition: transform 0.4s ease;
+        }
+
+        .prato:hover img {
+            transform: scale(1.08);
+        }
+        .prato img {
+            width: 100%;
+            border-radius: 10px;
+            transition: transform 0.4s ease;
+        }
+
+        .prato:hover img {
+            transform: scale(1.08);
+        }
+        .prato {
+            position: relative;
+            overflow: hidden;
+        }
+
+            .prato::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: -100%;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient( 120deg, transparent, rgba(255,255,255,0.4), transparent );
+                transition: 0.5s;
+            }
+
+            .prato:hover::before {
+                left: 100%;
+            }
+            .origem{
+position:absolute;
+top:10px;
+left:10px;
+background:rgba(75,7,18,0.9);
+color:white;
+padding:6px 12px;
+border-radius:8px;
+font-size:13px;
+opacity:0;
+transform:translateY(-10px);
+transition:0.3s;
+}
+
+.prato:hover .origem{
+opacity:1;
+transform:translateY(0);
+}
     </style>
+    <img src="remy.png" class="remy" alt="Remy">
 </head>
 <body>
-    <div id="loginOverlay" class="login-overlay">
-        <div class="login-box">
-            <p class="login-tag">Acesso exclusivo da feira</p>
-            <h1>AROMA &amp; VISÃO</h1>
-            <p class="login-text">Digite a senha do chef para entrar na experiência gastronômica inspirada em <em>Ratatouille</em>.</p>
-            <input type="password" id="senhaInput" placeholder="Senha do chef" />
-            <button onclick="verificarSenha()">Entrar</button>
-            <p id="erroSenha" class="erro-senha"></p>
-        </div>
-    </div>
-    <div class="overlay-pattern"></div>
+
+
 
     <header id="inicio">
         <div class="hero">
@@ -577,28 +718,12 @@
     <footer>
         <p><strong>AROMA & VISÃO</strong> • Elegância francesa, cinema e ciência em uma experiência inspirada em Ratatouille</p>
         <strong>Alunos do 2º Técnico em Adm • Casemiro Poffo Professor</strong>
-        
 
+        <div class="remy-container">
+            <img src="remy.png" class="remy" alt="Remy">
+            <div class="fala-remy">Qualquer um pode cozinhar! 🐭</div>
+        </div>
     </footer>
-    <script>
-    function verificarSenha() {
-      const senhaCorreta = 'remy2026';
-      const input = document.getElementById('senhaInput').value;
-      const erro = document.getElementById('erroSenha');
-
-      if (input === senhaCorreta) {
-        document.body.classList.add('site-liberado');
-        erro.textContent = '';
-      } else {
-        erro.textContent = 'Senha incorreta. Tente novamente.';
-      }
-    }
-
-    document.getElementById('senhaInput').addEventListener('keypress', function(e) {
-      if (e.key === 'Enter') {
-        verificarSenha();
-      }
-    });
-    </script>
+    <!-- teste -->.
 </body>
 </html>
